@@ -11,7 +11,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Sber_app_Filyakin',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        appBarTheme: AppBarTheme(backgroundColor: Colors.lightGreenAccent,),
+        tabBarTheme: TabBarTheme(indicatorColor: Colors.lightGreenAccent,overlayColor: MaterialStateColor.resolveWith((states) => Colors.lightGreenAccent),),
+        colorScheme: ColorScheme(brightness: Brightness.light, primary: Colors.black, onPrimary: Colors.grey, secondary: Colors.lightGreenAccent, onSecondary: Colors.lightGreenAccent, error: Colors.red, onError: Colors.redAccent, background: Colors.white, onBackground: Colors.black, surface: Colors.white, onSurface: Colors.black),
         useMaterial3: true,
       ),
       home: const Home(),
@@ -60,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
@@ -70,56 +72,90 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tabs = ["Профиль", "Настройки"];
     return Scaffold(
-        body: NestedScrollView(headerSliverBuilder:
-            (BuildContext context, bool innerBoxIsScrolled) {
-      return <Widget>[
-        SliverOverlapAbsorber(
-          handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-          sliver: SliverAppBar(
-            leading: 
+      body: DefaultTabController(
+        length: tabs.length,
+        child: NestedScrollView( 
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+                SliverAppBar(
+                  expandedHeight: 200.0,
+                  floating: false,
+                  pinned: true,
+                  leading: 
                 IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.arrow_back),
+                  icon: Image.asset("assets/icons/ic_24_cross.png"),
                 ),
                 actions: [IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.exit_to_app),
+                  icon: Image.asset("assets/icons/ic_24_arrow_right_square.png"),
                 ),],
-            floating: true,
-            snap: true,
-            pinned: true,
-            flexibleSpace:  FlexibleSpaceBar(
-                title: Text("Екатерина"),
-                collapseMode: CollapseMode.pin,
-                centerTitle: true,
-                expandedTitleScale: 1,
-                background: Padding(padding: const EdgeInsets.only(bottom: 36, top:36), child: Image.asset("assets/images/ecat.png", alignment: Alignment.center,width: 50, height: 50,)),
-              ),
-            expandedHeight: 200.0,
-            forceElevated: innerBoxIsScrolled,
-          ),
-        ),
-      ];
-    }, body: Builder(builder: (BuildContext context) {
-      return CustomScrollView(
-        // The "controller" and "primary" members should be left unset, so that
-        // the NestedScrollView can control this inner scroll view.
-        // If the "controller" property is set, then this scroll view will not
-        // be associated with the NestedScrollView.
-        slivers: <Widget>[
-          SliverOverlapInjector(
-              handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
-          SliverFixedExtentList(
-            itemExtent: 48.0,
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) =>
-                  ListTile(title: Text('Item $index')),
-              childCount: 30,
+                  flexibleSpace: FlexibleSpaceBar(
+                      title: Text("Екатерина",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16.0,
+                          )),
+                      centerTitle: true,
+                      titlePadding: EdgeInsets.only(bottom: 20),
+                      background: Container(
+                  padding:  EdgeInsets.only(top: 58),
+                  color: Colors.white,
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: SizedBox(
+                      child: Image.asset('assets/images/ecat.png',
+                        width:110,
+                        height:110,
+                        )
+                    )
+                  )
+                  )),
+                ),
+                SliverPersistentHeader(
+                  //
+                  delegate: _SliverAppBarDelegate(
+                    TabBar(
+                      labelColor: Colors.black87,
+                      unselectedLabelColor: Colors.grey,
+                      tabs: tabs.map((String name) => Tab(text: name)).toList(),
+                    ),
+                  ),
+                  pinned: true,
+                ),
+              ];
+            },
+            body: const Center(
+              child: Text("Sample text"),
             ),
-          ),
-        ],
-      );
-    })));
+        ),
+      ),
+    );
   }
 }
+
+  class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+    _SliverAppBarDelegate(this._tabBar);
+
+    final TabBar _tabBar;
+
+    @override
+    double get minExtent => _tabBar.preferredSize.height;
+    @override
+    double get maxExtent => _tabBar.preferredSize.height;
+
+    @override
+    Widget build(
+        BuildContext context, double shrinkOffset, bool overlapsContent) {
+      return Container(
+        child: _tabBar,
+      );
+    }
+
+    @override
+    bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+      return false;
+    }
+  }
