@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sber_app_filyakin/sliverAppBarWithImage.dart';
+import 'package:sber_app_filyakin/sliverAppBarDelegate.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,10 +12,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Sber_app_Filyakin',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        appBarTheme: AppBarTheme(backgroundColor: Colors.lightGreenAccent,),
-        tabBarTheme: TabBarTheme(indicatorColor: Colors.lightGreenAccent,overlayColor: MaterialStateColor.resolveWith((states) => Colors.lightGreenAccent),),
-        colorScheme: ColorScheme(brightness: Brightness.light, primary: Colors.black, onPrimary: Colors.grey, secondary: Colors.lightGreenAccent, onSecondary: Colors.lightGreenAccent, error: Colors.red, onError: Colors.redAccent, background: Colors.white, onBackground: Colors.black, surface: Colors.white, onSurface: Colors.black),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white54,
+        ),
+        tabBarTheme: TabBarTheme(
+          indicatorColor: Colors.green,
+          indicatorSize: TabBarIndicatorSize.tab,
+          overlayColor:
+              MaterialStateColor.resolveWith((states) => Colors.green),
+        ),
+          colorScheme: const ColorScheme(
+            brightness: Brightness.light,
+            primary: Colors.black,
+            onPrimary: Colors.grey,
+            secondary: Colors.lightGreenAccent,
+            onSecondary: Colors.lightGreenAccent,
+            error: Colors.red,
+            onError: Colors.redAccent,
+            background: Colors.white,
+            onBackground: Colors.black,
+            surface: Colors.white,
+            onSurface: Colors.black),
         useMaterial3: true,
       ),
       home: const Home(),
@@ -79,44 +100,9 @@ class Home extends StatelessWidget {
         child: NestedScrollView( 
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
-                SliverAppBar(
-                  expandedHeight: 200.0,
-                  floating: false,
-                  pinned: true,
-                  leading: 
-                IconButton(
-                  onPressed: () {},
-                  icon: Image.asset("assets/icons/ic_24_cross.png"),
-                ),
-                actions: [IconButton(
-                  onPressed: () {},
-                  icon: Image.asset("assets/icons/ic_24_arrow_right_square.png"),
-                ),],
-                  flexibleSpace: FlexibleSpaceBar(
-                      title: Text("Екатерина",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16.0,
-                          )),
-                      centerTitle: true,
-                      titlePadding: EdgeInsets.only(bottom: 20),
-                      background: Container(
-                  padding:  EdgeInsets.only(top: 58),
-                  color: Colors.white,
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: SizedBox(
-                      child: Image.asset('assets/images/ecat.png',
-                        width:110,
-                        height:110,
-                        )
-                    )
-                  )
-                  )),
-                ),
+                const sliverAppBarWithImage(),
                 SliverPersistentHeader(
-                  //
-                  delegate: _SliverAppBarDelegate(
+                  delegate: SliverAppBarDelegate(
                     TabBar(
                       labelColor: Colors.black87,
                       unselectedLabelColor: Colors.grey,
@@ -135,27 +121,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
-  class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-    _SliverAppBarDelegate(this._tabBar);
-
-    final TabBar _tabBar;
-
-    @override
-    double get minExtent => _tabBar.preferredSize.height;
-    @override
-    double get maxExtent => _tabBar.preferredSize.height;
-
-    @override
-    Widget build(
-        BuildContext context, double shrinkOffset, bool overlapsContent) {
-      return Container(
-        child: _tabBar,
-      );
-    }
-
-    @override
-    bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-      return false;
-    }
-  }
