@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:sber_app_filyakin/profileTabScreen.dart';
 import 'package:sber_app_filyakin/sliverAppBarWithImage.dart';
 import 'package:sber_app_filyakin/sliverAppBarDelegate.dart';
+import 'package:sber_app_filyakin/utils/Strings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Sber_app_Filyakin',
       debugShowCheckedModeBanner: false,
+      supportedLocales: Strings.supportedLocales,
+      locale: Strings.locale,
+      localizationsDelegates: Strings.localizationDelegates,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white54,
@@ -93,30 +98,80 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tabs = ["Профиль", "Настройки"];
+    var tabs = ["Профиль", "Настройки"];
     return Scaffold(
       body: DefaultTabController(
         length: tabs.length,
         child: NestedScrollView( 
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
-                const sliverAppBarWithImage(),
-                SliverPersistentHeader(
-                  delegate: SliverAppBarDelegate(
-                    TabBar(
-                      labelColor: Colors.black87,
-                      unselectedLabelColor: Colors.grey,
-                      tabs: tabs.map((String name) => Tab(text: name)).toList(),
-                    ),
-                  ),
-                  pinned: true,
-                ),
-              ];
+           return <Widget>[
+              CombinedSliverAppBar(tabs: tabs)
+            ];
             },
-            body: const Center(
-              child: Text("Sample text"),
-            ),
+            body: TabBarView(
+            children: <Widget>[
+              const ProfileTabScreen(),
+              Container(),
+            ],
         ),
+      ),
+    ),
+    );
+  }
+}
+
+class CombinedSliverAppBar extends StatelessWidget {
+  final List<String> tabs;
+
+  const CombinedSliverAppBar({Key? key, required this.tabs}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverOverlapAbsorber(
+      handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+      sliver: SliverAppBar(
+        expandedHeight: 250.0,
+        floating: false,
+        pinned: true,
+        leading: IconButton(
+          onPressed: () {},
+          icon: Image.asset("assets/icons/ic_24_cross.png"),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Image.asset("assets/icons/ic_24_arrow_right_square.png"),
+          ),
+        ],
+        flexibleSpace: FlexibleSpaceBar(
+          title: Padding(
+            padding: const EdgeInsets.only(bottom:45.0),
+            child: Text(
+              Strings.of(context).userName,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16.0,
+              ),
+            ),
+          ),
+          collapseMode: CollapseMode.pin,
+          expandedTitleScale: 1.5,
+          centerTitle: true,
+          titlePadding: const EdgeInsets.only(),
+          background: Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 70.0),
+              child: Align(alignment: Alignment.topCenter,child: SizedBox(
+                height: 110,
+                width: 110,
+                child: Image.asset(
+                  'assets/images/ecat.png',
+                ),
+              ),),
+            ) 
+          ),
+        ),
+        bottom: SliverAppTabBar(tabs: tabs),
       ),
     );
   }

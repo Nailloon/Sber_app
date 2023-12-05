@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+
 class HeaderAndText extends StatelessWidget{
-  const HeaderAndText({Key? key}) : super(key: key);
+  final String label;
+  final String text;
+  const HeaderAndText({Key? key, required this.label, required this.text}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(constraints: const BoxConstraints(minHeight: 68),
-    child: const Column(children: [Text(""),Text("")],));
+    return Padding(
+      padding: const EdgeInsets.only(bottom:8.0, left: 16.0),
+      child: ConstrainedBox(constraints: const BoxConstraints(minHeight: 68),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start,children: [Text(label),Text(text)])),
+    );
   }
 }
