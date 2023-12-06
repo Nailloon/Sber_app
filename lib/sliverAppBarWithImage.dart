@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sber_app_filyakin/sliverAppBarDelegate.dart';
 import 'package:sber_app_filyakin/utils/Strings.dart';
+import 'package:sber_app_filyakin/utils/TextThemes.dart';
 
 class sliverAppBarWithImage extends StatelessWidget {
   const sliverAppBarWithImage({Key? key}) : super(key: key);
@@ -24,10 +25,7 @@ class sliverAppBarWithImage extends StatelessWidget {
       flexibleSpace: FlexibleSpaceBar(
         title: Text(
           Strings.of(context).userName,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 16.0,
-          ),
+          style: sfProTextTheme.displayMedium
         ),
         collapseMode: CollapseMode.pin,
         expandedTitleScale: 1.5,
@@ -45,20 +43,25 @@ class sliverAppBarWithImage extends StatelessWidget {
   }
 }
 
-class SliverAppTabBar extends StatelessWidget implements PreferredSizeWidget {
-  final List<String> tabs;
+class SliverAppBarTabBar extends StatelessWidget {
+final List<String> tabs;
 
-  const SliverAppTabBar({Key? key, required this.tabs}) : super(key: key);
+const SliverAppBarTabBar({Key? key, required this.tabs}) : super(key: key);
 
-  @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
-
-  @override
-  Widget build(BuildContext context) {
-    return TabBar(
-      labelColor: Colors.black87,
-      unselectedLabelColor: Colors.grey,
-      tabs: tabs.map((String name) => Tab(text: name)).toList(),
-    );
-  }
+@override
+Widget build(BuildContext context) {
+return SliverOverlapAbsorber(
+handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+sliver: SliverPersistentHeader(
+delegate: SliverAppBarDelegate(
+TabBar(
+labelColor: Colors.black87,
+unselectedLabelColor: Colors.grey,
+tabs: tabs.map((String name) => Tab(text: name)).toList(),
+),
+),
+pinned: true,
+),
+);
+}
 }

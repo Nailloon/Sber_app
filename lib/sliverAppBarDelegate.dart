@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
     Widget build(
         BuildContext context, double shrinkOffset, bool overlapsContent) {
       return Container(
+        color: Colors.white,
         child: _tabBar,
       );
     }
