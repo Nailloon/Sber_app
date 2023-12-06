@@ -5,7 +5,8 @@ class ChipsWidget extends StatefulWidget {
   final Color neutralColor;
   final Color selectedColor;
 
-  ChipsWidget({
+  const ChipsWidget({
+    super.key,
     required this.chipList,
     required this.neutralColor,
     required this.selectedColor,
@@ -35,7 +36,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
             widget.chipList[index],
             style: Theme.of(context).textTheme.labelMedium,
           ),
-          shape: StadiumBorder(),
+          shape: const StadiumBorder(),
           selected: isSelected[index],
           checkmarkColor: Colors.black,
           backgroundColor:

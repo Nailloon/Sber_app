@@ -22,7 +22,7 @@ class MyCard extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Color(0x114F4F6C),
                   blurRadius: 14,
@@ -36,46 +36,55 @@ class MyCard extends StatelessWidget {
                   spreadRadius: 0,
                 )
               ]),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Image.asset(cardInfo.image),
-                  Text(
-                    cardInfo.labelText,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  )
-                ],
-              ),
-              cardInfo.underCardText
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(cardInfo.image),
+                    const SizedBox(
+                      width: 12.0,
+                    ),
+                    Text(
+                      cardInfo.labelText,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 22.0,
+                ),
+                cardInfo.underCardText
+              ],
+            ),
           ),
         ));
   }
 }
 
 class ListViewWithMyCards extends StatelessWidget {
-final List<CardInfo> myCards;
+  final List<CardInfo> myCards;
 
-const ListViewWithMyCards({Key? key, required this.myCards}) : super(key: key);
+  const ListViewWithMyCards({Key? key, required this.myCards})
+      : super(key: key);
 
-@override
-Widget build(BuildContext context) {
-return ListView.separated(
-  separatorBuilder: (BuildContext context, int index) {
-      return SizedBox(width:8.0);
-   },
-clipBehavior: Clip.none,
-scrollDirection: Axis.horizontal,
-
-physics: const BouncingScrollPhysics(
-parent: AlwaysScrollableScrollPhysics(),
-decelerationRate: ScrollDecelerationRate.fast),
-itemCount: myCards.length,
-itemBuilder: (BuildContext context, int index) {
-return MyCard(cardInfo: myCards[index]);
-},
-);
-}
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      separatorBuilder: (BuildContext context, int index) {
+        return const SizedBox(width: 8.0);
+      },
+      clipBehavior: Clip.none,
+      scrollDirection: Axis.horizontal,
+      physics: const BouncingScrollPhysics(
+          parent: AlwaysScrollableScrollPhysics(),
+          decelerationRate: ScrollDecelerationRate.fast),
+      itemCount: myCards.length,
+      itemBuilder: (BuildContext context, int index) {
+        return MyCard(cardInfo: myCards[index]);
+      },
+    );
+  }
 }

@@ -10,24 +10,34 @@ class ProfileTabScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var chipsText = [
-      "Еда",
-      "Саморазвитие",
-      "Технологии",
-      "Дом",
-      "Досуг",
-      "Забота о себе",
-      "Наука"
+      Strings.of(context).food,
+      Strings.of(context).selfDevelopment,
+      Strings.of(context).technologies,
+      Strings.of(context).home,
+      Strings.of(context).leisure,
+      Strings.of(context).selfcare,
+      Strings.of(context).science,
     ];
     var cards = [
       CardInfo(
-          labelText: "СберПрайм",
-          underCardText:
-              HeaderAndText(label: "Платёж 9 июля", text: "199Р в месяц"),
+          labelText: Strings.of(context).sberPrime,
+          underCardText: HeaderAndText(
+            label: Strings.of(context).paymentDate,
+            text: Strings.of(context).paymentPrice,
+            height: 4,
+            labelStyle: Theme.of(context).textTheme.labelMedium,
+            textStyle: Theme.of(context).textTheme.labelSmall,
+          ),
           image: "assets/images/sverPrime.png"),
       CardInfo(
-          labelText: "Переводы",
+          labelText: Strings.of(context).transfer,
           underCardText: HeaderAndText(
-              label: "Автопродление 21 августа", text: "199Р в месяц"),
+            label: Strings.of(context).paymentDate2,
+            text: Strings.of(context).paymentPrice,
+            height: 4,
+            labelStyle: Theme.of(context).textTheme.labelMedium,
+            textStyle: Theme.of(context).textTheme.labelSmall,
+          ),
           image: "assets/images/percent.png")
     ];
     return SafeArea(
@@ -46,19 +56,31 @@ class ProfileTabScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      HeaderAndText(
-                        label: Strings.of(context).services,
-                        text: Strings.of(context).servicesText,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 20.0),
+                        child: HeaderAndText(
+                          label: Strings.of(context).services,
+                          text: Strings.of(context).servicesText,
+                        ),
                       ),
-                      SizedBox(
-                          height: 130,
-                          child: ListViewWithMyCards(myCards: cards)),
-                      HeaderAndText(
-                          label: Strings.of(context).tariffs,
-                          text: Strings.of(context).operations),
-                      HeaderAndText(
-                          label: Strings.of(context).interests,
-                          text: Strings.of(context).interestsDescription),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 46.0),
+                        child: SizedBox(
+                            height: 130,
+                            child: ListViewWithMyCards(myCards: cards)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 12.0),
+                        child: HeaderAndText(
+                            label: Strings.of(context).tariffs,
+                            text: Strings.of(context).operations),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16.0),
+                        child: HeaderAndText(
+                            label: Strings.of(context).interests,
+                            text: Strings.of(context).interestsDescription),
+                      ),
                       ChipsWidget(
                           chipList: chipsText,
                           neutralColor:

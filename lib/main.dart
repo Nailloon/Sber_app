@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sber_app_filyakin/screens/profileTabScreen.dart';
-import 'package:sber_app_filyakin/widgets/cards.dart';
-import 'package:sber_app_filyakin/widgets/headerAndText.dart';
 import 'package:sber_app_filyakin/widgets/sliverAppBarWithImage.dart';
 import 'package:sber_app_filyakin/utils/Strings.dart';
 import 'package:sber_app_filyakin/utils/TextThemes.dart';
@@ -35,8 +33,8 @@ class MyApp extends StatelessWidget {
             brightness: Brightness.light,
             primary: Colors.black,
             onPrimary: Colors.grey,
-            secondary: Colors.lightGreenAccent,
-            onSecondary: Colors.lightGreenAccent,
+            secondary: Colors.green,
+            onSecondary: Colors.green,
             error: Colors.red,
             onError: Colors.redAccent,
             background: Colors.white,
@@ -45,7 +43,7 @@ class MyApp extends StatelessWidget {
             onSurface: Colors.black),
         useMaterial3: true,
       ),
-      home: Home(),
+      home: const Home(),
     );
   }
 }
@@ -62,7 +60,7 @@ class Home extends StatelessWidget {
         child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
-              sliverAppBarWithImage(),
+              const sliverAppBarWithImage(),
               SliverAppBarTabBar(tabs: tabs)
             ];
           },
