@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sber_app_filyakin/sliverAppBarDelegate.dart';
+import 'package:sber_app_filyakin/widgets/sliverAppBarDelegate.dart';
 import 'package:sber_app_filyakin/utils/Strings.dart';
 import 'package:sber_app_filyakin/utils/TextThemes.dart';
 
@@ -30,7 +30,7 @@ class sliverAppBarWithImage extends StatelessWidget {
         collapseMode: CollapseMode.pin,
         expandedTitleScale: 1.5,
         centerTitle: true,
-        titlePadding: const EdgeInsets.only(bottom: 20),
+        titlePadding: const EdgeInsets.only(bottom: 17),
         background: Center(
           child: SizedBox(height: 110, width:110,
               child: Image.asset(

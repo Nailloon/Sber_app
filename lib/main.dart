@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sber_app_filyakin/profileTabScreen.dart';
-import 'package:sber_app_filyakin/sliverAppBarWithImage.dart';
-import 'package:sber_app_filyakin/sliverAppBarDelegate.dart';
+import 'package:sber_app_filyakin/screens/profileTabScreen.dart';
+import 'package:sber_app_filyakin/widgets/sliverAppBarWithImage.dart';
 import 'package:sber_app_filyakin/utils/Strings.dart';
 import 'package:sber_app_filyakin/utils/TextThemes.dart';
 
