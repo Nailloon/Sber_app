@@ -31,7 +31,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
           style: Theme.of(context).textTheme.labelMedium),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
           selected: isSelected[index],
-          showCheckmark: false,
+          checkmarkColor: Colors.black,
           backgroundColor: isSelected[index] ? widget.selectedColor : widget.neutralColor,
           onSelected: (bool selected) {
             setState(() {
