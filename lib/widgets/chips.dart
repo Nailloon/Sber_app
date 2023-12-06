@@ -5,7 +5,11 @@ class ChipsWidget extends StatefulWidget {
   final Color neutralColor;
   final Color selectedColor;
 
-  ChipsWidget({required this.chipList, required this.neutralColor, required this.selectedColor});
+  ChipsWidget({
+    required this.chipList,
+    required this.neutralColor,
+    required this.selectedColor,
+  });
 
   @override
   _ChipsWidgetState createState() => _ChipsWidgetState();
@@ -27,12 +31,15 @@ class _ChipsWidgetState extends State<ChipsWidget> {
       runSpacing: 8.0,
       children: List<Widget>.generate(widget.chipList.length, (index) {
         return FilterChip(
-          label: Text(widget.chipList[index], 
-          style: Theme.of(context).textTheme.labelMedium),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          label: Text(
+            widget.chipList[index],
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
+          shape: StadiumBorder(),
           selected: isSelected[index],
           checkmarkColor: Colors.black,
-          backgroundColor: isSelected[index] ? widget.selectedColor : widget.neutralColor,
+          backgroundColor:
+              isSelected[index] ? widget.selectedColor : widget.neutralColor,
           onSelected: (bool selected) {
             setState(() {
               isSelected[index] = selected;

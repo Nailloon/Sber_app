@@ -23,19 +23,19 @@ class sliverAppBarWithImage extends StatelessWidget {
         ),
       ],
       flexibleSpace: FlexibleSpaceBar(
-        title: Text(
-          Strings.of(context).userName,
-          style: sfProTextTheme.displayMedium
-        ),
+        title: Text(Strings.of(context).userName,
+            style: sfProTextTheme.displayMedium),
         collapseMode: CollapseMode.pin,
         expandedTitleScale: 1.5,
         centerTitle: true,
         titlePadding: const EdgeInsets.only(bottom: 17),
         background: Center(
-          child: SizedBox(height: 110, width:110,
-              child: Image.asset(
-                'assets/images/ecat.png',
-              ),
+          child: SizedBox(
+            height: 110,
+            width: 110,
+            child: Image.asset(
+              'assets/images/ecat.png',
+            ),
           ),
         ),
       ),
@@ -44,24 +44,24 @@ class sliverAppBarWithImage extends StatelessWidget {
 }
 
 class SliverAppBarTabBar extends StatelessWidget {
-final List<String> tabs;
+  final List<String> tabs;
 
-const SliverAppBarTabBar({Key? key, required this.tabs}) : super(key: key);
+  const SliverAppBarTabBar({Key? key, required this.tabs}) : super(key: key);
 
-@override
-Widget build(BuildContext context) {
-return SliverOverlapAbsorber(
-handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-sliver: SliverPersistentHeader(
-delegate: SliverAppBarDelegate(
-TabBar(
-labelColor: Colors.black87,
-unselectedLabelColor: Colors.grey,
-tabs: tabs.map((String name) => Tab(text: name)).toList(),
-),
-),
-pinned: true,
-),
-);
-}
+  @override
+  Widget build(BuildContext context) {
+    return SliverOverlapAbsorber(
+      handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+      sliver: SliverPersistentHeader(
+        delegate: SliverAppBarDelegate(
+          TabBar(
+            labelColor: Colors.black,
+            unselectedLabelColor: Colors.grey,
+            tabs: tabs.map((String name) => Tab(text: name)).toList(),
+          ),
+        ),
+        pinned: true,
+      ),
+    );
+  }
 }

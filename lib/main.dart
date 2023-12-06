@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sber_app_filyakin/screens/profileTabScreen.dart';
+import 'package:sber_app_filyakin/widgets/cards.dart';
+import 'package:sber_app_filyakin/widgets/headerAndText.dart';
 import 'package:sber_app_filyakin/widgets/sliverAppBarWithImage.dart';
 import 'package:sber_app_filyakin/utils/Strings.dart';
 import 'package:sber_app_filyakin/utils/TextThemes.dart';
@@ -27,9 +29,9 @@ class MyApp extends StatelessWidget {
           indicatorColor: Colors.green,
           indicatorSize: TabBarIndicatorSize.tab,
           overlayColor:
-              MaterialStateColor.resolveWith((states) => Colors.green), 
+              MaterialStateColor.resolveWith((states) => Colors.green),
         ),
-          colorScheme: const ColorScheme(
+        colorScheme: const ColorScheme(
             brightness: Brightness.light,
             primary: Colors.black,
             onPrimary: Colors.grey,
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
             onSurface: Colors.black),
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: Home(),
     );
   }
 }
@@ -57,21 +59,21 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: DefaultTabController(
         length: tabs.length,
-        child: NestedScrollView( 
+        child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-           return <Widget>[
+            return <Widget>[
               sliverAppBarWithImage(),
               SliverAppBarTabBar(tabs: tabs)
             ];
-            },
-            body: TabBarView(
+          },
+          body: TabBarView(
             children: <Widget>[
               const ProfileTabScreen(),
               Container(),
             ],
+          ),
         ),
       ),
-    ),
     );
   }
 }
