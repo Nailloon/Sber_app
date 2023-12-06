@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
           overlayColor:
               MaterialStateColor.resolveWith((states) => Colors.green),
         ),
+        dividerTheme: const DividerThemeData(color: Colors.black, thickness: 2),
         colorScheme: const ColorScheme(
             brightness: Brightness.light,
             primary: Colors.black,
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
             onError: Colors.redAccent,
             background: Colors.white,
             onBackground: Colors.white,
-            surface: Colors.white,
+            surface: Colors.black,
             onSurface: Colors.black),
         useMaterial3: true,
       ),

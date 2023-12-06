@@ -3,12 +3,44 @@ import 'package:sber_app_filyakin/widgets/cards.dart';
 import 'package:sber_app_filyakin/widgets/chips.dart';
 import 'package:sber_app_filyakin/widgets/headerAndText.dart';
 import 'package:sber_app_filyakin/utils/Strings.dart';
+import 'package:sber_app_filyakin/widgets/wideButton.dart';
 
 class ProfileTabScreen extends StatelessWidget {
   const ProfileTabScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var buttons = [
+      WideButtonData(
+        imagePath: "assets/icons/ic_36_speedometer.png",
+        buttonText: HeaderAndText(
+          label: Strings.of(context).dailyLimit,
+          labelStyle: Theme.of(context).textTheme.bodyMedium,
+          text: Strings.of(context).limitText,
+          height: 4,
+        ),
+        onTap: () {},
+      ),
+      WideButtonData(
+        imagePath: "assets/icons/ic_36_percent.png",
+        buttonText: HeaderAndText(
+          label: Strings.of(context).transferWithoutCommision,
+          labelStyle: Theme.of(context).textTheme.bodyMedium,
+          text: Strings.of(context).transferText,
+          height: 4,
+        ),
+        onTap: () {},
+      ),
+      WideButtonData(
+        imagePath: "assets/icons/ic_36_arrows_forward_back.png",
+        buttonText: HeaderAndText(
+          label: Strings.of(context).transferInfo,
+          labelStyle: Theme.of(context).textTheme.bodyMedium,
+          height: 4,
+        ),
+        onTap: () {},
+      ),
+    ];
     var chipsText = [
       Strings.of(context).food,
       Strings.of(context).selfDevelopment,
@@ -74,6 +106,10 @@ class ProfileTabScreen extends StatelessWidget {
                         child: HeaderAndText(
                             label: Strings.of(context).tariffs,
                             text: Strings.of(context).operations),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 46.0),
+                        child: WideButtonList(buttons: buttons),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 16.0),
