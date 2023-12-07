@@ -1,16 +1,34 @@
 # sber_app_filyakin
 
-A new Flutter project.
+## Filyakin Artem, OmSTU
 
-## Getting Started
+This Flutter project present simple UI of prototype of the Sberbank application. Screenshots from other devices enclosed.
 
-This project is a starting point for a Flutter application.
+## Versions of used tools
 
-A few resources to get you started if this is your first Flutter project:
+Flutter (Channel stable, 3.16.2, on Microsoft Windows [Version 10.0.19045.3448], locale ru-RU)
+    • Framework revision 9e1c857886 (7 days ago), 2023-11-30 11:51:18 -0600
+    • Engine revision cf7a9d0800
+    • Dart version 3.2.2
+    • DevTools version 2.28.3
+    • Tested mostly on Samsung A40, also on web (Microsoft Edge 120.0.2210.49),
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Screenshots from Pixel 6 Pro API 33
+![Начальная часть экрана|500](Pixel6Screenshot1.png)
+![Проскроленный экран со сдвинутыми карточками|500](Pixel6Screenshot2.png)
+![Нижняя часть экрана с выбранными chips](Pixel6Screenshot3.png)
+![Непроскроленный экран с выбранным пунктом настроек](Pixel6Screenshot5.png)
+![Проскроленный экран с выбранным пунктом настроек](Pixel6Screenshot4.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots from Edge iPhone XR
+![Начальная часть экрана|500](EdgeScreenshot1.png)
+![Проскроленный экран со сдвинутыми карточками и выбранными chips|500](EdgeScreenshot2.png)
+![Экран настроек|500](EdgeScreenshot3.png)
+
+## Screenshots from Samsung A40
+![Начальная часть экрана|500](A40Screenshot1.jpg)
+![Проскроленный экран со сдвинутыми карточками|500](A40Screenshot2.jpg)
+![Нижняя часть экрана с выбранными chips](A40Screenshot3.jpg)
+![Нижняя часть экрана без выбранных chips](A40Screenshot4.jpg)
+![Непроскроленный экран с выбранным пунктом настроек](A40Screenshot5.jpg)
+![Проскроленный экран с выбранным пунктом настроек](A40Screenshot6.jpg)

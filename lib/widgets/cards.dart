@@ -19,8 +19,7 @@ const MyCard({Key? key, required this.cardInfo}) : super(key: key);
 @override
 Widget build(BuildContext context) {
 double parentHeight = MediaQuery.of(context).size.height;
-double sizedBoxHeight =
-        parentHeight - 32; // subtracting the padding of the parent Container
+double sizedBoxHeight = parentHeight - 32;
 return SizedBox(
     width: 216,
     height: sizedBoxHeight,
@@ -69,6 +68,12 @@ return SizedBox(
     ));
 }
 }
+
+
+
+
+
+
 
 class ListViewWithMyCards extends StatelessWidget {
   final List<CardInfo> myCards;
