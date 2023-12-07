@@ -4,6 +4,10 @@
 
 This Flutter project present simple UI of prototype of the Sberbank application. Screenshots from other devices enclosed.
 
+## When you clone Code
+
+Don't forget to write "flutter pub get" before run the app!
+
 ## Versions of used tools
 
 Flutter (Channel stable, 3.16.2, on Microsoft Windows [Version 10.0.19045.3448], locale ru-RU)
