@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sber_app_filyakin/utils/ColorsPalete.dart';
 
 class FontFamilies {
   final String? displayFont;
@@ -37,14 +38,14 @@ TextTheme sfProTextTheme = TextTheme(
     height: 1.28571,
     fontSize: 14,
     fontWeight: FontWeight.normal,
-    color: const Color.fromRGBO(0, 0, 0, 0.55),
+    color: ColorPalette.nearBlackColor,
   ),
   labelMedium: TextStyle(
     fontFamily: fontfamilies.textFont,
     fontSize: 14,
     letterSpacing: -0.41,
     fontWeight: FontWeight.normal,
-    color: Colors.black,
+    color: ColorPalette.blackColor,
     height: 1.28571,
   ),
   labelSmall: TextStyle(
@@ -52,7 +53,7 @@ TextTheme sfProTextTheme = TextTheme(
     fontSize: 14,
     letterSpacing: -0.41,
     fontWeight: FontWeight.normal,
-    color: const Color.fromRGBO(0, 0, 0, 0.55),
+    color: ColorPalette.nearBlackColor,
     height: 1.28571,
   ),
 );

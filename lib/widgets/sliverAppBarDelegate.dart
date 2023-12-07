@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sber_app_filyakin/utils/ColorsPalete.dart';
 
 class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   SliverAppBarDelegate(this._tabBar);
@@ -14,7 +15,7 @@ class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      color: Colors.white,
+      color: ColorPalette.whiteColor,
       child: _tabBar,
     );
   }

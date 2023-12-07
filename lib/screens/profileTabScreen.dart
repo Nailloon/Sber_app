@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sber_app_filyakin/utils/ColorsPalete.dart';
 import 'package:sber_app_filyakin/widgets/cards.dart';
 import 'package:sber_app_filyakin/widgets/chips.dart';
 import 'package:sber_app_filyakin/widgets/headerAndText.dart';
@@ -119,9 +120,8 @@ class ProfileTabScreen extends StatelessWidget {
                       ),
                       ChipsWidget(
                           chipList: chipsText,
-                          neutralColor:
-                              Colors.black.withOpacity(0.07999999821186066),
-                          selectedColor: Colors.green),
+                          neutralColor: ColorPalette.blackColorWithOpacity,
+                          selectedColor: ColorPalette.mainGreenColor),
                     ],
                   ),
                 ),

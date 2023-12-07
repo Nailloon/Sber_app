@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sber_app_filyakin/utils/ColorsPalete.dart';
 import 'package:sber_app_filyakin/widgets/sliverAppBarDelegate.dart';
 import 'package:sber_app_filyakin/utils/Strings.dart';
 import 'package:sber_app_filyakin/utils/TextThemes.dart';
@@ -55,8 +56,8 @@ class SliverAppBarTabBar extends StatelessWidget {
       sliver: SliverPersistentHeader(
         delegate: SliverAppBarDelegate(
           TabBar(
-            labelColor: Colors.black,
-            unselectedLabelColor: Colors.grey,
+            labelColor: ColorPalette.blackColor,
+            unselectedLabelColor: ColorPalette.greyColor,
             tabs: tabs.map((String name) => Tab(text: name)).toList(),
           ),
         ),

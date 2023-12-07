@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:sber_app_filyakin/utils/ColorsPalete.dart";
 import "package:sber_app_filyakin/widgets/headerAndText.dart";
 
 class CardInfo {
@@ -12,56 +13,61 @@ class CardInfo {
 }
 
 class MyCard extends StatelessWidget {
-  final CardInfo cardInfo;
-  const MyCard({Key? key, required this.cardInfo}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-        width: 216,
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: const [
-                BoxShadow(
-                  color: Color(0x114F4F6C),
-                  blurRadius: 14,
-                  offset: Offset(0, 8),
-                  spreadRadius: 0,
-                ),
-                BoxShadow(
-                  color: Color(0x14000000),
-                  blurRadius: 10,
-                  offset: Offset(0, 2),
-                  spreadRadius: 0,
-                )
-              ]),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+final CardInfo cardInfo;
+const MyCard({Key? key, required this.cardInfo}) : super(key: key);
+
+@override
+Widget build(BuildContext context) {
+double parentHeight = MediaQuery.of(context).size.height;
+double sizedBoxHeight =
+        parentHeight - 32; // subtracting the padding of the parent Container
+return SizedBox(
+    width: 216,
+    height: sizedBoxHeight,
+    child: DecoratedBox(
+      decoration: BoxDecoration(
+          color: ColorPalette.whiteColor,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: const [
+            BoxShadow(
+              color: ColorPalette.boxShadowColor1,
+              blurRadius: 14,
+              offset: Offset(0, 8),
+              spreadRadius: 0,
+            ),
+            BoxShadow(
+              color: ColorPalette.boxShadowColor2,
+              blurRadius: 10,
+              offset: Offset(0, 2),
+              spreadRadius: 0,
+            )
+          ]),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    Image.asset(cardInfo.image),
-                    const SizedBox(
-                      width: 12.0,
-                    ),
-                    Text(
-                      cardInfo.labelText,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    )
-                  ],
-                ),
+                Image.asset(cardInfo.image),
                 const SizedBox(
-                  height: 22.0,
+                  width: 12.0,
                 ),
-                cardInfo.underCardText
+                Text(
+                  cardInfo.labelText,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                )
               ],
             ),
-          ),
-        ));
-  }
+            const SizedBox(
+              height: 22.0,
+            ),
+            cardInfo.underCardText
+          ],
+        ),
+      ),
+    ));
+}
 }
 
 class ListViewWithMyCards extends StatelessWidget {

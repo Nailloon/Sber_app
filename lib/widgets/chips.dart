@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:sber_app_filyakin/utils/ColorsPalete.dart";
 
 class ChipsWidget extends StatefulWidget {
   final List<String> chipList;
@@ -38,7 +39,7 @@ class _ChipsWidgetState extends State<ChipsWidget> {
           ),
           shape: const StadiumBorder(),
           selected: isSelected[index],
-          checkmarkColor: Colors.black,
+          checkmarkColor: ColorPalette.blackColor,
           backgroundColor:
               isSelected[index] ? widget.selectedColor : widget.neutralColor,
           onSelected: (bool selected) {

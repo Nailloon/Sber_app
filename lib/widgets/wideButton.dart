@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:sber_app_filyakin/utils/ColorsPalete.dart';
 import 'package:sber_app_filyakin/widgets/headerAndText.dart';
 
 class WideButton extends StatelessWidget {
-  final String imagePath;
-  final HeaderAndText buttonText;
-  final VoidCallback onTap;
+  final WideButtonData buttonData;
 
   const WideButton({
     Key? key,
-    required this.imagePath,
-    required this.buttonText,
-    required this.onTap,
+    required this.buttonData,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.sizeOf(context).width;
     return InkWell(
-      onTap: onTap,
+      onTap: buttonData.onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         child: Row(
           children: [
             Image.asset(
-              imagePath,
+              buttonData.imagePath,
               width: 36,
               height: 36,
               fit: BoxFit.cover,
@@ -31,7 +28,7 @@ class WideButton extends StatelessWidget {
             const SizedBox(width: 12),
             ConstrainedBox(
               constraints: BoxConstraints(maxWidth: mediaQuery - (64 + 48)),
-              child: buttonText,
+              child: buttonData.buttonText,
             ),
             const Spacer(),
             Icon(
@@ -59,9 +56,7 @@ class WideButtonList extends StatelessWidget {
           Column(
             children: [
               WideButton(
-                imagePath: buttons[i].imagePath,
-                buttonText: buttons[i].buttonText,
-                onTap: buttons[i].onTap,
+                buttonData: buttons[i],
               ),
               if (i < buttons.length - 1)
                 const Divider(
@@ -69,7 +64,7 @@ class WideButtonList extends StatelessWidget {
                   thickness: 0,
                   indent: 48,
                   endIndent: 0,
-                  color: Colors.grey,
+                  color: ColorPalette.greyColor,
                 ),
             ],
           ),
